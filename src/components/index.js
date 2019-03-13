@@ -1,6 +1,12 @@
+import 'normalize.css'
+import test from './test.vue'
+import test1 from './test1.vue'
+import test2 from './test2.vue'
+import actionsheet from './action-sheet'
 
-
-console.log(1)
-export default tmp = {
-    a:1
+export {
+  test,
+  test1,
+  test2,
+  actionsheet
 }

@@ -22,14 +22,14 @@ const createLintingRule = () => ({
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    // app: './src/main.js'
-    app:process.env.NODE_ENV === 'production'
-      ? './src/components/index.js'
-      : './src/main.js'
+    app: process.env.NODE_ENV === 'production'
+    ? './src/components/index.js' // 生产模式下导入文件
+    : './src/main.js' // 开发模式下导入文件
   },
   output: {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
+    // path: config.build.assetsRoot,
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'hjs_vue_h5.js',
     publicPath: process.env.NODE_ENV === 'production'
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
@@ -77,7 +77,12 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
+      },
+      {
+        test:/\.(scss|sass)$/,
+        use:["style-loader","css-loader","less-loader"]
       }
+
     ]
   },
   node: {
